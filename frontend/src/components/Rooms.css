@@ -1,0 +1,234 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,600&display=swap');
+
+/* Variables */
+:root {
+  --primary-color: #004a99;
+  --secondary-color: #ffffff;
+  --accent-color: #ffcc00;
+  --text-color: #333;
+}
+
+/* Full Page */
+.full-page {
+  min-height: 100vh; /* Full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Body Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  color: var(--text-color);
+  background-color: #f9f9f9;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--primary-color);
+  padding: 1rem 2rem;
+  position: relative; /* Ensure positioning for dropdown */
+}
+
+.navbar .logo img {
+  width: 100px; /* Adjusted logo size */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex; /* Flex display for nav links */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Added transitions */
+}
+
+.nav-links li {
+  margin-left: 2rem;
+}
+
+.nav-links a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.nav-links .active {
+  color: var(--secondary-color);
+}
+
+.nav-links a:hover {
+  color: var(--accent-color);
+  transform: scale(1.05);
+}
+
+/* Dropdown Toggle */
+.nav-toggle {
+  display: none; /* Hidden on larger screens */
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  height: 3px;
+  width: 25px;
+  background: var(--secondary-color);
+  margin: 4px 0;
+  transition: 0.3s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem; /* Reduced padding */
+  }
+
+  .nav-links {
+    transform: translateX(50%); /* Slide links to the right */
+    opacity: 0; /* Fade out */
+    display: flex; /* Keep links flex for animation */
+  }
+
+  .nav-links.active {
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Reset position */
+  }
+
+  .nav-links {
+    display: none; /* Hide links by default on smaller screens */
+    flex-direction: column; /* Stack nav links */
+    align-items: flex-start; /* Align links to the left */
+    position: absolute; /* Position dropdown */
+    right: 0; /* Align to the right */
+    top: 100%; /* Position below the navbar */
+    background-color: var(--primary-color); /* Background color */
+    padding: 1rem; /* Padding for dropdown */
+    border-radius: 5px; /* Rounded corners */
+    z-index: 10; /* Ensure dropdown is above other content */
+    opacity: 0; /* Start hidden */
+    transform: translateY(-10px); /* Slide up */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transition for dropdown */
+  }
+
+  .nav-links.active {
+    display: flex; /* Show links when active */
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide down */
+  }
+
+  .nav-toggle {
+    display: flex; /* Show toggle on smaller screens */
+  }
+
+  .rooms {
+    padding: 2rem; /* Reduced padding for rooms section */
+  }
+
+  .room-list {
+    display: flex;
+    gap: 1rem; /* Consistent gap between cards */
+    justify-content: center; /* Center the items */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    transition: all 0.5s ease; /* Smooth transition for repositioning */
+    padding: 1rem; /* Padding for horizontal scroll */
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+
+  .room {
+    width: 90%; /* Allow room to take 90% of the width */
+    max-width: 300px; /* Ensure max width remains for larger screens */
+    margin: 1rem; /* Ensured consistent margin around cards */
+  }
+}
+
+/* Rooms Section */
+.rooms {
+  flex-grow: 1; /* Allow this section to grow */
+  padding: 2rem 1rem; /* Reduced padding for small screens */
+  background-color: #f5f5f5;
+  text-align: center; /* Center content */
+  transition: padding 0.3s ease; /* Transition for padding */
+}
+
+.rooms h1 {
+  font-size: 2.5rem; /* Adjust title size for small screens */
+  margin-bottom: 1rem; /* Reduced margin */
+  color: var(--primary-color);
+}
+
+/* Room List */
+.room-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Consistent gap between cards */
+  justify-content: center; /* Center the items */
+  flex-wrap: wrap; /* Allow wrapping of items */
+  transition: all 0.5s ease; /* Smooth transition for repositioning */
+  padding: 1rem; /* Padding for horizontal scroll */
+  overflow-x: auto; /* Enable horizontal scrolling */
+}
+
+/* Room */
+.room {
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  overflow: hidden; /* Reduced margin */
+  width: 100%; /* Allow room to take full width on small screens */
+  max-width: 500px; /* Maximum width for larger screens */
+  margin: 1rem; /* Ensured consistent margin around cards */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, width 0.3s, margin 0.3s; /* Add width and margin transition */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.room:hover {
+  transform: translateY(-10px);
+}
+
+.room img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.room-content {
+  padding: 1rem; /* Reduced padding */
+  text-align: left; /* Align text to the left */
+}
+
+/* Button Styles */
+.btn {
+  background-color: var(--accent-color);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Footer Styles */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
